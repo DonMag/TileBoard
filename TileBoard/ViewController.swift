@@ -66,11 +66,14 @@ class ViewController: UIViewController, TileBoardViewDelegate {
 			
 		])
 		
-		//64 character string = "1234567890123456789012345678901234567890123456789012345678901234"
-		let testChars: String = "This string must have exactly 64 characters to fill the 64 tiles"
+		// we can set the tile labels with a 64-char string or with a 64-element array of strings
+		//use 64 character string  "1234567890123456789012345678901234567890123456789012345678901234"
+		// let testChars: String = "This string must have exactly 64 characters to fill the 64 tiles"
+		// boardView.labels = testChars
 		
-		// set the tile labels
-		boardView.labels = testChars
+		// or, 64-element array
+		//let testArray: [String] = (1...64).map { String($0) }
+		//boardView.labelsArray = testArray
 		
 		// set tile font
 		boardView.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -79,7 +82,7 @@ class ViewController: UIViewController, TileBoardViewDelegate {
 		boardView.spacing = 1
 		
 		// use 8-pt "padding" for all 4 sides of the grid
-		boardView.padding = 8
+		boardView.padding = 1
 		
 		// we can also set the tile
 		//	"normal" background color - default is blue

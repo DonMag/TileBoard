@@ -96,9 +96,22 @@ class TileBoardView: UIView {
 			if labels.count != 64 {
 				print("Must have 64 characters for tile labels!")
 			} else {
-				for (tile, label) in zip(tilesArray, labels.map { String($0) }) {
+				labelsArray = labels.map { String($0) }
+//				for (tile, label) in zip(tilesArray, labels.map { String($0) }) {
+//					tile.text = label
+//				}
+			}
+		}
+	}
+	var labelsArray: [String] = [String]() {
+		didSet {
+			if labelsArray.count != 64 {
+				print("Must have 64 string elements for tile labels!")
+			} else {
+				for (tile, label) in zip(tilesArray, labelsArray) {
 					tile.text = label
 				}
+
 			}
 		}
 	}
@@ -187,7 +200,6 @@ class TileBoardView: UIView {
 		if selectedTilesArray.isEmpty {
 			
 			if let t = touches.first {
-				//let loc = t.location(in: self)
 				let loc = t.location(in: mainStack)
 
 				var tempTile: MyTileLabel?
@@ -260,7 +272,6 @@ class TileBoardView: UIView {
 		super.touchesMoved(touches, with: event)
 		
 		if let t = touches.first {
-//			let loc = t.location(in: self)
 			let loc = t.location(in: mainStack)
 
 			var tempTile: MyTileLabel?
@@ -279,7 +290,7 @@ class TileBoardView: UIView {
 			guard let thisTile = tempTile else {
 				return
 			}
-			
+
 			// here we know touch moved onto an unselected tile
 			
 			// if thisTile is NOT in array of selectable tiles,
@@ -335,7 +346,7 @@ class TileBoardView: UIView {
 			//	so find it
 			
 			// if prev row and prev col are both not equal to this row and this col,
-			//	we're moving on a diagnal
+			//	we're moving on a diagonal
 			if prevRow != thisRow && prevCol != thisCol {
 				
 				let nextRow = thisRow > prevRow ? thisRow + 1 : thisRow - 1
