@@ -97,9 +97,6 @@ class TileBoardView: UIView {
 				print("Must have 64 characters for tile labels!")
 			} else {
 				labelsArray = labels.map { String($0) }
-//				for (tile, label) in zip(tilesArray, labels.map { String($0) }) {
-//					tile.text = label
-//				}
 			}
 		}
 	}
@@ -116,9 +113,9 @@ class TileBoardView: UIView {
 		}
 	}
 	
-	var tilesArray: [MyTileLabel] = [MyTileLabel]()
-	var selectableTilesArray: [MyTileLabel] = [MyTileLabel]()
-	var selectedTilesArray: [MyTileLabel] = [MyTileLabel]()
+	var tilesArray: [MyTileLabel] = []
+	var selectableTilesArray: [MyTileLabel] = []
+	var selectedTilesArray: [MyTileLabel] = []
 	var nextSelectableTile: MyTileLabel?
 	
 	var msTopConstraint: NSLayoutConstraint!
